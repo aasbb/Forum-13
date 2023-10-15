@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void memoriStatis()
+{
+    int SIZE = 9;
+    int data[SIZE]; // Alokasi memori statis
+    int i;
+
+    // Inisialisasi elemen-elemen array
+    for (i = 0; i < SIZE; i++)
+    {
+        data[i] = i * 2;
+    }
+
+    // Menampilkan isi array
+    for (i = 0; i < SIZE; i++)
+    {
+        printf("data[%d] = %d\n", i + 1, data[i]);
+    }
+}
+
+void memoriDinamis()
+{
+    int SIZE = 9;
+    int *data;                                // Deklarasi pointer int
+    data = (int *)malloc(SIZE * sizeof(int)); // Alokasi memori dinamis
+
+    if (data == NULL)
+    {
+        printf("Alokasi memori gagal.\n");
+        return;
+    }
+
+    // Inisialisasi elemen-elemen array
+    for (int i = 0; i < SIZE; i++)
+    {
+        data[i] = i * 2;
+    }
+
+    // Menggunakan array
+    for (int i = 0; i < SIZE; i++)
+    {
+        printf("data[%d] = %d\n", i + 1, data[i]);
+    }
+
+    free(data); // Membebaskan memori setelah selesai digunakan
+}
+
+int main()
+{
+    printf("\n");
+    printf("Dynamic Memory :\n");
+    memoriDinamis();
+    printf("\n");
+    printf("Static Memory :\n");
+    memoriStatis();
+    printf("\n");
+    return 0;
+}
